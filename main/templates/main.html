@@ -9,10 +9,10 @@
             font-family: 'Arial';
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #f9c3d7, #2a255c);
+            background: linear-gradient(to bottom, #fff8ff, #ca82d5);
         }
         header {
-            background-color: #2a255c;
+            background-color: #4a1d51;
             color: #fff;
             text-align: center;
             padding: 50px;
@@ -33,10 +33,36 @@
             margin: 20px;
             border-radius: 30px;
             text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 4, 6, 0.3);
+        }
+        
+        
+
+        h3 {
+            font-size: 20px;
+            color: #5a0f65;
+            margin-top: 3px;
+            margin-bottom: 3cpx;
         }
 
-        h5, h4, h3 {
-            font-size: 16px;
+        h2 {
+            font-size: 23px;
+            text-align: center;
+            color: #5a0f65;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+        .pet-card img {
+            display: block;
+            margin: 0 auto;
+            max-width: 60%;
+            height: auto;
         }
 
     </style>
@@ -49,8 +75,8 @@
     <div class="container">
         {% for i in product %}
         <div class="pet-card">
-            <h3>Product:</h3>
-            <p>{{ i.product }}</p>
+            <h2>{{ i.product }}</h2>
+            <img src="{{ i.image_url }}" alt="{{ i.product }}" text-align= center style="max-width:60%; height: auto;">
 
             <h3>Price:</h3>
             <p>{{ i.price }}</p>
