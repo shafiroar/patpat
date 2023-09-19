@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +40,15 @@
             box-shadow: 0 4px 6px rgba(0, 4, 6, 0.3);
         }
         
-        
+        .btn {
+            background-color: #4a1d51;
+            color: #fff;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: auto; 
+        }
 
         h3 {
             font-size: 20px;
@@ -86,8 +98,40 @@
 
             <h3>Pet:</h3>
             <p>{{ i.pet }}</p>
+            <button class="btn">Buy Now</button>
         </div>
         {% endfor %}
     </div>
 </body>
 </html>
+
+
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Pet</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for product in products %}
+        <tr>
+            <td>{{product.product}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.pet}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}
