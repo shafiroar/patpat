@@ -73,3 +73,4 @@ MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-Vie
    - ViewModel berfungsi sebagai perantara antara Model dan View, tetapi ViewModel memiliki lebih banyak kontrol atas tampilan data yang disajikan.
 
 Perbedaan antara ketiganya terutama terletak pada bagaimana tanggung jawab dan peran masing-masing komponen diatur dan dipisahkan. MVC adalah konsep yang lebih umum digunakan dalam pengembangan web tradisional, sedangkan MVT khusus untuk Django, dan MVVM sering digunakan dalam aplikasi seluler dan desktop modern. Pilihan tergantung pada teknologi yang digunakan dan kebutuhan proyek pengembangan perangkat lunak.
+
