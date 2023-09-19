@@ -112,8 +112,8 @@ Perbedaan antara ketiganya terutama terletak pada bagaimana tanggung jawab dan p
 
 ### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
-### INPUT FORM
-## Langkah 1: Buat Struktur `Form` 
+## INPUT FORM
+### Langkah 1: Buat Struktur `Form` 
 - Buat berkas `forms.py` dalam direktori main untuk membuat struktur form. 
 Gunakan kode berikut:
 ```python
@@ -126,7 +126,7 @@ class ProductForm(ModelForm):
         fields = ["name", "price", "description"]
 ```
 
-## Langkah 2: Tambahkan fungsi `Views` 
+### Langkah 2: Tambahkan fungsi `Views` 
 - Buka berkas `views.py` dalam direktori main dan tambahkan import yang diperlukan.
 Gunakan kode berikut:
 ```python
@@ -147,15 +147,15 @@ def create_product(request):
     return render(request, "create_product.html", context)
 ```
 
-## Langkah 3: Perbaikin fungsi `show_main` 
+### Langkah 3: Perbaikin fungsi `show_main` 
 - Perbarui fungsi `show_main` dalam `views.py` untuk menampilkan data produk yang ada dengan melanjutkan dari tugas sebelumnya.
 
-## Langkah 4: Tambahkan URL
+### Langkah 4: Tambahkan URL
 - Buka berkas `urls.py` dalam direktori `main` dan tambahkan URL untuk akses fungsi `create_product`.
 ```python
 path('create-product', create_product, name='create_product'),
 ```
-## Langkah 5: Buat Form HTML
+### Langkah 5: Buat Form HTML
 - Buat berkas `create_product.html` dalam direktori `main/templates` dan tambahkan kode form HTML.
 ```python
 {% extends 'base.html' %} 
@@ -182,7 +182,7 @@ path('create-product', create_product, name='create_product'),
 ## Langkah 6: Tampilkan Data pada Halaman Utama
 Perbarui berkas `main.html` dalam direktori `main/templates` untuk menampilkan data produk dalam bentuk tabel dan tombol "Add New Product" yang akan mengarahkan ke halaman form.
 
-### 5 FUNGSI VIEWS
+## 5 FUNGSI VIEWS
 Berikut adalah langkah-langkah singkat untuk menjawab pertanyaan tentang cara menambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID dalam Django:
 
 ### Mengembalikan Data dalam Format HTML
@@ -240,7 +240,7 @@ def show_json_by_id(request, id):
 
 Setelah mengikuti langkah-langkah ini, Anda akan memiliki lima fungsi views yang dapat digunakan untuk melihat objek yang sudah ditambahkan dalam berbagai format (HTML, XML, JSON) serta berdasarkan ID dalam format XML dan JSON. Pastikan untuk menambahkan URL yang sesuai agar Anda dapat mengakses fungsi-fungsi tersebut.
 
-### MEMBUAT ROUTING URL
+## MEMBUAT ROUTING URL
 Tambahkan semua path URL fungsi yang telah disebutkan di atas ke dalam variabel `urlpatterns` dalam berkas `urls.py` di direktori main. Jangan lupa untuk mengimpor fungsi-fungsi tersebut dari `views.py`. Lalu menambahkan kode:
 ```python
 from django.urls import path
@@ -259,7 +259,7 @@ urlpatterns = [
 ```
 Dengan ini kita telah menambahkan path URL, mengintegrasikan fungsi-fungsi tersebut ke dalam aplikasi Django Anda, sehingga kita dapat mengaksesnya melalui URL yang sesuai. Setelah menambahkan kode ini, jalankan perintah `python manage.py runserver` dan kunjungi http://localhost:8000 untuk mengakses aplikasi.
 
-### - [x] SCREENSHOT POSTMAN
+##S SCREENSHOT POSTMAN
 ## 1. HTML
 <img src="/image/1.jpg">
 
