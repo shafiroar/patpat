@@ -3,11 +3,11 @@
 ## Kelas   : PBP C
 ## Link Aplikasi : https://patpat.adaptable.app/main/
 
-###**Daftar Isi**
+## **Daftar Isi**
 - [Tugas 2](#Tugas2)
-- [Tugas 3](#Tugas-3)
+- [Tugas 3](#Tugas3)
 
-## **Tugas 2** 
+## Tugas2 
 
 ### 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
@@ -79,7 +79,7 @@ MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-Vie
 
 Perbedaan antara ketiganya terutama terletak pada bagaimana tanggung jawab dan peran masing-masing komponen diatur dan dipisahkan. MVC adalah konsep yang lebih umum digunakan dalam pengembangan web tradisional, sedangkan MVT khusus untuk Django, dan MVVM sering digunakan dalam aplikasi seluler dan desktop modern. Pilihan tergantung pada teknologi yang digunakan dan kebutuhan proyek pengembangan perangkat lunak.
 
-### ** Tugas 3 **
+## Tugas3 
 ### 1. Apa perbedaan antara form `POST` dan form `GET` dalam Django?
 
 | Perbedaan         |  `POST`                                           | `GET`                                                 |
