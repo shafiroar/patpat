@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <title>PatPat</title>
     <style>
-
         body {
             font-family: 'Arial';
             margin: 0;
@@ -172,5 +171,14 @@
         Add New Product
     </button>
 </a>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
+    </button>
+</a>
+
 
 {% endblock content %}
