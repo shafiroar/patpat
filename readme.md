@@ -366,26 +366,10 @@ Dengan ini kita telah menambahkan path URL, mengintegrasikan fungsi-fungsi terse
 | Langkah | Deskripsi |
 | ------- | --------- |
 | 1       | **Impor Modul**<br>Impor modul yang diperlukan seperti `django.http` di dalam berkas `views.py` atau berkas yang sesuai. Ini diperlukan untuk mengelola cookies. |
-| 2       | **Mengatur Nilai Cookies**<br>Setelah pengguna berhasil masuk atau sesi dimulai, Anda dapat mengatur nilai cookies menggunakan objek `HttpResponse`<br>Contoh:
-```python
-response = HttpResponse("Hello, User!")
-response.set_cookie('username', 'JohnDoe', max_age=3600)
-return response
-```
-<br>Di sini, kita mengatur cookie 'username' dengan nilai 'JohnDoe' yang akan berlaku selama 1 jam (3600 detik). |
-| 3       | **Mengambil Nilai Cookies**<br>Untuk mengambil nilai cookies yang telah disimpan, Anda dapat menggunakan `request.COOKIES`. Contohnya:<br><br>
-
-```python
-username = request.COOKIES.get('username')
-```
-<br>Dengan kode ini, Anda akan mendapatkan nilai dari cookie 'username' jika ada. |
-| 4       | **Menghapus Cookies**<br>Jika Anda ingin menghapus cookie yang sudah ada, Anda dapat menggunakan metode `.delete_cookie()`. Contohnya:<br><br>
-
-```python
-response.delete_cookie('username')
-```
-<br>Dengan kode ini, cookie 'username' akan dihapus. |
-| 5       | **Keamanan Cookies**<br>Penting untuk tidak menyimpan data sensitif atau kata sandi dalam cookies karena cookies bersifat terbuka dan dapat dibaca oleh pengguna. Untuk data sensitif, gunakan sesi Django yang lebih aman. Pastikan untuk menggantikan contoh kode dengan kode yang sesuai dengan kebutuhan aplikasi Anda. |
+| 2       | **Mengatur Nilai Cookies**<br>Setelah pengguna berhasil masuk atau sesi dimulai, Anda dapat mengatur nilai cookies menggunakan objek `HttpResponse`|
+| 3       | **Mengambil Nilai Cookies**<br>Untuk mengambil nilai cookies yang telah disimpan, Anda dapat menggunakan `request.COOKIES`|
+| 4       | **Menghapus Cookies**<br>Jika Anda ingin menghapus cookie yang sudah ada, Anda dapat menggunakan metode `.delete_cookie()`|
+| 5       | **Keamanan Cookies**<br>Penting untuk tidak menyimpan data sensitif atau kata sandi dalam cookies karena cookies bersifat terbuka dan dapat dibaca oleh pengguna. Untuk data sensitif, gunakan sesi Django yang lebih aman. Pastikan untuk menggantikan contoh kode dengan kode yang sesuai dengan kebutuhan aplikasi.|
 
 Dengan mengikuti langkah-langkah ini, Anda dapat menggunakan cookies dalam Django untuk mengelola data sesi pengguna dengan aman. Pastikan untuk menggantikan contoh kode dengan kode yang sesuai dengan kebutuhan aplikasi Anda.
 
@@ -393,15 +377,17 @@ Dengan mengikuti langkah-langkah ini, Anda dapat menggunakan cookies dalam Djang
 
 <details>
 <summary>4.Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?</summary>
-| Langkah                              | Deskripsi                                                                                                                                                           |
-|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Penggunaan Cookies dalam Web        | Penggunaan cookies dalam pengembangan web memiliki risiko potensial yang perlu diwaspadai. Ini adalah sejenis file kecil yang digunakan untuk menyimpan informasi sederhana, seperti preferensi atau sesi login pengguna. Risiko-risiko yang perlu diperhatikan adalah: |
-| Keamanan Data                       | Cookies bisa berisi informasi sensitif jika tidak dienkripsi dengan benar, seperti informasi akun pengguna. Pencurian data ini bisa berakibat fatal.                         |
-| Potensi Pencurian Cookie            | Penyerang dapat mencuri cookies dari perangkat pengguna, membahayakan keamanan informasi dan akun pengguna.                                                       |
-| Privasi                             | Cookies juga bisa digunakan untuk melacak aktivitas online tanpa izin, yang dapat mengganggu privasi pengguna.                                                     |
-| Modifikasi Cookie                   | Pengguna dengan pengetahuan teknis dapat memanipulasi cookies, memungkinkan akses yang tidak sah atau perubahan data.                                              |
-| Tindakan Keamanan                   | Untuk meningkatkan keamanan penggunaan cookies, pastikan untuk menggunakan HTTPS, enkripsi data sensitif dalam cookies, dan menjaga sesi login tetap aman.             |
-| Kesimpulan                          | Penggunaan cookies adalah alat yang berguna dalam pengembangan web, tetapi perlu diwaspadai risiko yang terkait dan tindakan keamanan yang sesuai harus diambil.     |
+
+| Langkah                          | Deskripsi                                                                                           |
+|----------------------------------|-----------------------------------------------------------------------------------------------------|
+| Penggunaan Cookies dalam Web     | Penggunaan cookies dalam pengembangan web memiliki risiko potensial yang perlu diwaspadai. Ini adalah sejenis file kecil yang digunakan untuk menyimpan informasi sederhana, seperti preferensi atau sesi login pengguna.                                                                                                                       |
+| Keamanan Data                    | Cookies bisa berisi informasi sensitif jika tidak dienkripsi dengan benar, seperti informasi akun pengguna. Pencurian data ini bisa berakibat fatal.                         |
+| Potensi Pencurian Cookie         | Penyerang dapat mencuri cookies dari perangkat pengguna, membahayakan keamanan informasi dan akun pengguna.                                                       |
+| Privasi                          | Cookies juga bisa digunakan untuk melacak aktivitas online tanpa izin, yang dapat mengganggu privasi pengguna.   |
+| Modifikasi Cookie                | Pengguna dengan pengetahuan teknis dapat memanipulasi cookies, memungkinkan akses yang tidak sah atau perubahan data.      |
+| Tindakan Keamanan                | Untuk meningkatkan keamanan penggunaan cookies, pastikan untuk menggunakan HTTPS, enkripsi data sensitif dalam cookies, dan menjaga sesi login tetap aman.|
+| Kesimpulan                       | Penggunaan cookies adalah alat yang berguna dalam pengembangan web, tetapi perlu diwaspadai risiko yang terkait dan tindakan keamanan yang sesuai harus diambil.|
+
 </details>
 
 <details>
