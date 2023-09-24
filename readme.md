@@ -346,6 +346,7 @@ Dengan ini kita telah menambahkan path URL, mengintegrasikan fungsi-fungsi terse
 
  <details>
 <summary>2.Apa perbedaan antara `autentikasi` dan `otorisasi` dalam konteks Django, dan mengapa keduanya penting?</summary>
+
 | Fitur                       | Autentikasi                                      | Otorisasi                                   |
 |-----------------------------|-------------------------------------------------|---------------------------------------------|
 | Definisi                   | Proses verifikasi identitas pengguna            | Proses memberikan izin akses kepada pengguna |
@@ -365,7 +366,7 @@ Dengan ini kita telah menambahkan path URL, mengintegrasikan fungsi-fungsi terse
 | Langkah | Deskripsi |
 | ------- | --------- |
 | 1       | **Impor Modul**<br>Impor modul yang diperlukan seperti `django.http` di dalam berkas `views.py` atau berkas yang sesuai. Ini diperlukan untuk mengelola cookies. |
-| 2       | **Mengatur Nilai Cookies**<br>Setelah pengguna berhasil masuk atau sesi dimulai, Anda dapat mengatur nilai cookies menggunakan objek `HttpResponse`. Contoh:<br><br>
+| 2       | **Mengatur Nilai Cookies**<br>Setelah pengguna berhasil masuk atau sesi dimulai, Anda dapat mengatur nilai cookies menggunakan objek `HttpResponse`<br>Contoh:
 ```python
 response = HttpResponse("Hello, User!")
 response.set_cookie('username', 'JohnDoe', max_age=3600)
@@ -392,8 +393,6 @@ Dengan mengikuti langkah-langkah ini, Anda dapat menggunakan cookies dalam Djang
 
 <details>
 <summary>4.Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?</summary>
-Berikut adalah tabel README tentang penggunaan cookies dalam pengembangan web:
-
 | Langkah                              | Deskripsi                                                                                                                                                           |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Penggunaan Cookies dalam Web        | Penggunaan cookies dalam pengembangan web memiliki risiko potensial yang perlu diwaspadai. Ini adalah sejenis file kecil yang digunakan untuk menyimpan informasi sederhana, seperti preferensi atau sesi login pengguna. Risiko-risiko yang perlu diperhatikan adalah: |
@@ -403,13 +402,10 @@ Berikut adalah tabel README tentang penggunaan cookies dalam pengembangan web:
 | Modifikasi Cookie                   | Pengguna dengan pengetahuan teknis dapat memanipulasi cookies, memungkinkan akses yang tidak sah atau perubahan data.                                              |
 | Tindakan Keamanan                   | Untuk meningkatkan keamanan penggunaan cookies, pastikan untuk menggunakan HTTPS, enkripsi data sensitif dalam cookies, dan menjaga sesi login tetap aman.             |
 | Kesimpulan                          | Penggunaan cookies adalah alat yang berguna dalam pengembangan web, tetapi perlu diwaspadai risiko yang terkait dan tindakan keamanan yang sesuai harus diambil.     |
-
-Anda dapat menyalin tabel ini dan memasukkannya ke dalam README Anda sesuai kebutuhan.
 </details>
 
 <details>
 <summary>5. Jelaskan bagaimana cara kamu mengimplementasikan `checklist` di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
-Berikut adalah rangkuman singkat dari tutorial "Membuat Fungsi dan Form Registrasi" hingga "Menghubungkan Model Product dengan User":
 
 1. **Membuat Fungsi Registrasi dan Form Registrasi:**
    - Buat fungsi `register` di `views.py` untuk menangani proses registrasi pengguna.
@@ -446,7 +442,6 @@ Berikut adalah rangkuman singkat dari tutorial "Membuat Fungsi dan Form Registra
    - Modifikasi fungsi `create_product` untuk mengaitkan produk yang dibuat dengan pengguna yang sedang login.
    - Tampilkan produk yang dimiliki oleh pengguna yang sedang login di halaman utama.
 
-Ikuti langkah-langkah ini untuk membuat sistem registrasi, login, logout, pembatasan akses, penggunaan cookies, dan menghubungkan produk dengan pengguna dalam aplikasi web Django Anda.
 </details>
 
 </details>
