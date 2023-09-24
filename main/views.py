@@ -27,8 +27,8 @@ def show_main(request):
         'image_url' : 'https://i0.wp.com/www.petmania.ie/wp-content/uploads/2023/04/MP20774_Petmania_Whiskas_Brand-page-612x435-Mobile.jpg?fit=612%2C435&ssl=1',
         'last_login': request.COOKIES['last_login'],
         }
+    
     return render(request, "main.html", context)
-
 
 def create_product(request):
     form = ProductForm(request.POST or None)
