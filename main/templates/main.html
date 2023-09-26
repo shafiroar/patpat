@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +11,10 @@
             font-family: 'Arial';
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #fff8ff, #ca82d5);
+            background:#fff8ff;
             min-height: 100%;
         }
+
         header {
             background-color: #751A60;
             color: #fff;
@@ -22,7 +22,7 @@
             padding: 50px;
         }
         .container {
-            max-width: 2000px;
+            max-width: 1200px; 
             margin: 0 auto;
             padding: 20px;
             text-align: center;
@@ -34,7 +34,6 @@
             background-color: #fff;
             border: 1px solid #ddd;
             padding: 20px;
-            margin: 20px;
             border-radius: 30px;
             text-align: left;
             box-shadow: 0 4px 6px rgba(0, 4, 6, 0.3);
@@ -43,22 +42,28 @@
         .btn {
             background-color: #751A60;
             color: #fff;
-            padding: 10px 40px;
+            padding: 10px 20px; 
             border: none;
             border-radius: 20px;
             cursor: pointer;
-            margin-top: auto; 
+            margin-top: 10px; 
         }
 
         h3 {
             font-size: 15px;
             color: #751A60;
             margin-top: 3px;
-            margin-bottom: 3cpx;
+            margin-bottom: 3px;
         }
 
         h2 {
             font-size: 20px;
+            text-align: center;
+            color: #751A60;
+        }
+
+        h5{
+            font-size: 10px;
             text-align: center;
             color: #751A60;
         }
@@ -74,15 +79,15 @@
         .pet-card img {
             display: block;
             margin: 0 auto;
-            max-width: 60%;
+            max-width: 100%; 
             height: auto;
         }
 
-        /*Style the table */
+
         table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 30px;
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
         }
 
         /*Style the table with headers*/
@@ -91,16 +96,17 @@
             color: #fff;
             font-weight: bold;
             text-align: center;
-            padding: 20px;
+            padding: 10px; 
         }
 
-        /* Style table cells (td) */
+
         td {
             padding: 10px;
             border: 1px solid #fff;
+            text-align: center; 
         }
 
-        /* Style the "Add New Product" button */
+
         button {
             background-color: #751A60;
             color: #fff;
@@ -108,15 +114,34 @@
             padding: 10px 20px;
             border-radius: 20px;
             cursor: pointer;
-            margin-bottom: 50px;
-            margin-left: 625px;
+            text-align: center; 
+        }
+
+        .add-product-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-weight: bold;
         }
 
         td.product-name {
             font-weight: bold;
             color: #751A60;
         }
+        
+        .logout-button {
+        text-align: center; 
+        margin-top: 20px; 
+        margin-bottom: 30px;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px; 
+        }
+
     </style>
+</head>
 <body>
     <header>
         <h1>PatPat Pet Shop</h1>
@@ -126,59 +151,88 @@
         <div class="pet-card">
             <h2>{{ product.product }}</h2>
             <img src="{{ image_url }}" alt="{{ i.product }}" text-align= center style="max-width:60%; height: auto;">
-
             <h3>Price:</h3>
             <p>{{ product.price }}</p>
+
+            <h3>Amount:</h3>
+            <p>{{ product.amount }}</p>
 
             <h3>Description:</h3>
             <p>{{ product.description }}</p>
 
             <h3>Pet:</h3>
             <p>{{ product.pet }}</p>
-
         </div>
         {% endfor %}
     </div>
 </body>
 </html>
 
-<h2> Today, we proudly offer a selection of {{ products_count }} fantastic items at PatPat Pet Shop!</h2>
+<h2>Today, we proudly offer a selection of {{ products_count }} fantastic items at PatPat Pet Shop!</h2>
 <table>
     <tr>
         <th>Product</th>
         <th>Price</th>
+        <th>Amount</th>
         <th>Description</th>
         <th>Pet</th>
+        <th>Increase</th> <!-- Tambahkan kolom Action -->
+        <th>Decrease</th>
+        <th>Delete Product</th>
     </tr>
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
     {% for product in products %}
-        <tr>
-            <td class="product-name">{{product.product}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.pet}}</td>
+        <tr class="add-colortext">
+            <td>{{ product.product }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.amount }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.pet }}</td>
+            <td>
+                <form action="{% url 'main:add_product' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button style="background-color: green; color: #fff; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Tambah">
+                        +
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form action="{% url 'main:decrement_product' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button style="background-color: orange; color: #fff; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Kurang">
+                        -
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form action="{% url 'main:remove_product' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button style="background-color: red; color: #fff; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Hapus">
+                        Delete
+                    </button>
+                </form>
+            </td>
         </tr>
     {% endfor %}
 </table>
 
-
-<br />
-
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
+<div class="add-product-button">
+    <a href="{% url 'main:create_product' %}">
+        <button>
+            Add New Product
+        </button>
+    </a>
+</div>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
-
-
+<div class="logout-button">
+    <a href="{% url 'main:logout' %}">
+        <button>
+            Logout
+        </button>
+    </a>
+</div>
 {% endblock content %}
