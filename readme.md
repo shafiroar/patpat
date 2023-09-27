@@ -428,6 +428,21 @@ Dengan mengikuti langkah-langkah ini, Anda dapat menggunakan cookies dalam Djang
    - Modifikasi fungsi `create_product` untuk mengaitkan produk yang dibuat dengan pengguna yang sedang login.
    - Tampilkan produk yang dimiliki oleh pengguna yang sedang login di halaman utama.
 
+7. **Menambahkan Bonus:**
+   - Pembuatan Fungsi dalam views.py:
+        1. Membuat tiga fungsi di views.py yang akan diakses melalui URL:
+            - add_product: Menambahkan satu unit produk ke keranjang belanja.
+            - decrement_product: Mengurangi satu unit produk dari keranjang belanja.
+            - remove_product: Menghapus produk dari keranjang belanja.
+        Fungsi ini menerima permintaan POST dan memprosesnya sesuai dengan tombol yang ditekan pada halaman HTML.
+        2. Konfigurasi URL dalam urls.py:
+            - Menambahkan tiga pola URL yang akan mengarahkan permintaan ke fungsi yang sesuai di views.py. 
+            - Setiap pola URL memiliki parameter product_id untuk mengidentifikasi produk yang akan diubah.
+        3. Penggunaan Tombol dalam main.html:
+            - Di dalam file template main.html, Anda telah menambahkan tombol yang akan digunakan untuk menambah, mengurangi, dan menghapus produk.
+            - Setiap tombol terletak dalam sebuah <form> yang mengirimkan permintaan POST ke URL yang sesuai dengan aksi yang diinginkan (add_product, decrement_product, atau remove_product).
+            - Tombol memiliki nama yang berbeda (Tambah, Kurang, atau Hapus) sehingga Anda dapat membedakan aksi yang diambil dalam fungsi views.py.
+
 </details>
 
 </details>
