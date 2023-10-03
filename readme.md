@@ -445,4 +445,145 @@ Dengan mengikuti langkah-langkah ini, Anda dapat menggunakan cookies dalam Djang
 
 </details>
 
+
+# Tugas 5
+
+<details>
+<summary> 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.</summary>
+
+**Element Selector** merupakan salah satu jenis selektor dalam CSS yang berfungsi untuk memilih elemen HTML berdasarkan jenis atau nama elemen yang digunakan. Dalam CSS, terdapat beberapa variasi selektor elemen yang sering digunakan, dan masing-masingnya memiliki kegunaan dan waktu yang sesuai untuk digunakan. Berikut ini adalah beragam jenis selektor elemen beserta manfaat dan situasi penggunaannya yang tepat:
+
+| Jenis Selector                  | Manfaat                                                                           | Waktu Penggunaan                                                                                                 |
+|---------------------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| Universal Selector (*)           | Memilih semua elemen pada halaman web.                                            | Jarang digunakan secara eksplisit karena dapat berdampak besar pada performa. Dapat digunakan untuk menerapkan gaya umum pada semua elemen.                |
+| Type Selector (e.g., p, h1, div) | Memilih semua elemen dengan jenis atau tipe yang spesifik misalnya, `<p>`, `<h1>`, `<div>`. | Digunakan ketika ingin mengaplikasikan gaya khusus pada jenis elemen tertentu pada halaman.                      |
+| Class Selector (e.g., .class-name) | Memilih semua elemen yang memiliki atribut class tertentu.                       | Berguna saat ingin mengaplikasikan gaya pada sekelompok elemen yang memiliki kelas yang sama. Dapat digunakan berulang-ulang pada halaman yang berbeda. |
+| ID Selector (e.g., #element-id)  | Memilih elemen dengan atribut ID tertentu.                                        | Digunakan ketika ingin mengaplikasikan gaya atau logika tertentu pada elemen yang memiliki ID unik. Sebaiknya digunakan satu kali untuk setiap ID pada halaman. |
+| Attribute Selector (e.g., [attribute=value]) | Memilih elemen berdasarkan atribut dan nilai atribut yang spesifik.         | Berguna ketika ingin mengaplikasikan gaya atau logika pada elemen dengan atribut tertentu, seperti mengubah gaya tautan dengan atribut "href" tertentu. |
+| Pseudo-class Selector (e.g., :hover, :first-child) | Memilih elemen berdasarkan keadaan atau status tertentu.                  | Digunakan untuk memberikan efek interaktif atau gaya tambahan pada elemen berdasarkan interaksi pengguna atau posisi dalam struktur dokumen. |
+| Pseudo-element Selector (e.g., ::before, ::after) | Memilih dan menggabungkan elemen palsu yang dibuat dengan CSS.         | Digunakan ketika ingin menambahkan konten tambahan ke dalam elemen, seperti ikon atau garis bawah pada tautan.       |
+
 </details>
+
+<details>
+<summary> 2. Jelaskan HTML5 Tag yang kamu ketahui. </summary>
+
+
+| Tag HTML5       | Deskripsi                                                     |
+|-----------------|---------------------------------------------------------------|
+| `<div>`         | Tag umum yang digunakan untuk mengelompokkan dan memformat elemen. |
+| `<p>`           | Digunakan untuk menampilkan paragraf teks.                       |
+| `<a>`           | Untuk membuat tautan atau hyperlink ke halaman lain.             |
+| `<img>`         | Digunakan untuk menampilkan gambar pada halaman web.             |
+| `<ul>` dan `<ol>`  | Untuk membuat daftar tak berurutan (unordered list) dan daftar terurut (ordered list). |
+| `<li>`          | Digunakan dalam elemen `<ul>` dan `<ol>` untuk mendefinisikan item dalam daftar. |
+| `<h1>`, `<h2>`, ... `<h6>` | Digunakan untuk menandai judul atau heading dengan tingkat kepentingan yang berbeda. |
+| `<form>`        | Untuk membuat formulir yang memungkinkan pengguna mengirimkan data. |
+| `<input>`       | Digunakan dalam elemen `<form>` untuk membuat berbagai jenis elemen input, seperti teks, email, dan lainnya. |
+| `<button>`      | Untuk membuat tombol interaktif yang dapat digunakan untuk tindakan pengguna. |
+
+</details>
+
+<details>
+<summary> 3. Jelaskan perbedaan antara margin dan padding. </summary>
+
+**Margin** adalah jarak luar elemen: Margin adalah ruang di sekitar elemen HTML, di luar batas elemen itu sendiri. Margin adalah jarak antara elemen tersebut dengan elemen-elemen lain di sekitarnya.
+Tidak berpengaruh pada latar belakang: Margin tidak memiliki latar belakang atau warna. Ini hanya mengatur jarak antara elemen-elemen.
+Mempengaruhi tata letak keseluruhan: Margin dapat memengaruhi tata letak keseluruhan halaman dengan memengaruhi jarak antara elemen-elemen di dalamnya.
+Nilai negatif diizinkan: Anda dapat mengatur margin dengan nilai negatif untuk menggeser elemen lebih dekat ke elemen lain.
+Padding:
+
+**Padding** adalah jarak di dalam elemen: Padding adalah ruang di dalam batas elemen HTML. Ini adalah jarak antara batas elemen dan kontennya sendiri.
+Pengaruh pada latar belakang: Padding dapat memiliki latar belakang atau warna, sehingga memengaruhi bagian dalam elemen.
+Mempengaruhi ukuran elemen: Padding memengaruhi ukuran total elemen. Misalnya, jika Anda memberikan padding pada sebuah kotak, ukuran kotak tersebut akan bertambah sesuai dengan padding yang ditentukan.
+Nilai negatif jarang digunakan: Padding jarang diatur dengan nilai negatif, dan dalam banyak kasus, itu tidak dianjurkan karena dapat menghasilkan tampilan yang tidak diinginkan.
+</details>
+ 
+
+<details>
+<summary> 4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya? </summary>
+
+| Aspek                         | Bootstrap                                                | Tailwind CSS                                                   |
+|-------------------------------|----------------------------------------------------------|-----------------------------------------------------------------|
+| **Filosofi Desain**           | Lebih mengikuti desain yang telah ditentukan dengan banyak komponen siap pakai. | Lebih mendukung pendekatan "utility-first," memungkinkan penyesuaian yang lebih besar dan desain yang lebih bebas.  |
+| **Kustomisasi**               | Terdapat opsi kustomisasi, tetapi perlu melewati proses yang lebih rumit. | Sangat fleksibel dan mudah dikustomisasi melalui pengaturan kelas CSS.    |
+| **Kesulitan Penggunaan**      | Lebih mudah bagi pemula karena komponen-komponen sudah ada dan mudah digunakan. | Memiliki kurva belajar yang lebih tinggi karena Anda harus memahami kelas-kelas utility. |
+| **Performa**                   | Lebih berat dibandingkan dengan Tailwind karena berisi lebih banyak CSS. | Lebih ringan karena hanya menggunakan apa yang diperlukan, sehingga biasanya lebih cepat. |
+| **Komunitas dan Ekosistem**   | Memiliki komunitas yang besar dan banyak dukungan serta dokumentasi. | Meskipun komunitasnya tumbuh, masih lebih kecil daripada Bootstrap.  |
+| **Proyek Skala Besar**         | Cocok untuk proyek besar dan kompleks yang memerlukan desain yang konsisten. | Cocok untuk proyek-proyek yang memerlukan kustomisasi desain yang ekstensif dan inovatif. |
+| **Kecepatan Pengembangan**    | Dapat mempercepat pengembangan dengan komponen siap pakai. | Memerlukan lebih banyak penulisan kode tetapi lebih fleksibel dalam penyesuaian desain. |
+| **Kapan Sebaiknya Digunakan** | Sebaiknya digunakan jika Anda ingin memulai dengan cepat dan perlu komponen-komponen yang sudah siap. | Sebaiknya digunakan jika Anda ingin kustomisasi desain yang tinggi dan memiliki kebutuhan yang sangat spesifik. |
+</details>
+
+<details>
+<summary>  5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
+
+1. **CSS Umum**:
+    - Bagian CSS umum yang digunakan untuk mengatur berbagai aspek tampilan halaman web.
+
+2. **Body Styling**:
+    - Styling untuk elemen `<body>` yang mengatur font, margin, padding, latar belakang, dan ketinggian minimum halaman.
+
+3. **Header Styling**:
+    - Styling untuk elemen `<header>` yang mencakup warna latar belakang, warna teks, penjajaran teks, dan padding.
+
+4. **Container Styling**:
+    - Styling untuk elemen dengan kelas "container" yang mencakup lebar maksimum, margin, padding, penjajaran teks, tata letak grid dengan tiga kolom, dan jarak antar elemen.
+
+5. **Pet Card Styling**:
+    - Styling untuk elemen dengan kelas "pet-card" yang mencakup warna latar belakang, border, padding, sudut bulat, penjajaran teks, dan bayangan.
+
+6. **Button Styling**:
+    - Styling untuk elemen dengan kelas "btn" yang digunakan untuk tombol. Ini mencakup warna latar belakang, warna teks, padding, border, sudut bulat, kursor, dan margin atas.
+
+7. **Heading Styling**:
+    - Styling untuk elemen-elemen `<h1>`, `<h2>`, `<h3>`, `<h5>` yang mencakup ukuran font, warna teks, dan margin.
+
+8. **Paragraph Styling**:
+    - Styling untuk elemen `<p>` yang mencakup ukuran font.
+
+9. **Image Styling**:
+    - Styling untuk elemen `<img>` yang mencakup penampilan gambar dengan membatasi lebar maksimum dan menjaga aspek rasio.
+
+10. **Table Styling**:
+    - Styling untuk elemen `<table>` yang mencakup lebar, margin bawah, dan pengaturan border-collapse.
+
+11. **Table Header Styling**:
+    - Styling untuk elemen-elemen `<th>` dalam tabel yang mencakup warna latar belakang, warna teks, tebal huruf, penjajaran teks, dan padding.
+
+12. **Table Data Styling**:
+    - Styling untuk elemen-elemen `<td>` dalam tabel yang mencakup padding, border, dan penjajaran teks.
+
+13. **Add Product Button Styling**:
+    - Styling untuk tombol "Add New Product" yang mencakup penjajaran teks, margin atas, dan font tebal.
+
+14. **Logout Button Styling**:
+    - Styling untuk tombol "Logout" yang mencakup penjajaran teks, margin atas, dan font tebal.
+
+15. **Background Color**:
+    - `background-color` digunakan untuk mengatur warna latar belakang elemen, seperti header dan kartu hewan peliharaan.
+    - Misalnya, `background-color: #751A60;` mengatur latar belakang dengan warna ungu tua.
+
+16. **Font Color**:
+    - `color` digunakan untuk mengatur warna teks dalam elemen, seperti header, teks harga, dan deskripsi produk.
+    - Misalnya, `color: #fff;` mengatur warna teks menjadi putih.
+
+17. **Warna Tombol**:
+    - Warna tombol, seperti "Add New Product" dan "Logout," juga diatur dengan `background-color` dan `color`.
+    - Misalnya, tombol "Add New Product" memiliki `background-color: #751A60;` dan `color: #fff;`, yang menghasilkan tombol dengan latar belakang ungu tua dan teks putih.
+
+18. **Warna Header**:
+    - Warna latar belakang header diatur dengan `background-color: #751A60;`, yang memberikan header latar belakang ungu tua.
+    - Warna teks diatur dengan `color: #fff;`, yang memberikan teks pada header warna putih.
+
+19. **Warna Judul Tabel**:
+    - Warna latar belakang judul tabel (elemen `<th>`) diatur dengan `background-color: #751A60;`, yang menghasilkan latar belakang ungu tua.
+    - Warna teks judul tabel diatur dengan `color: #fff;`, yang memberikan teks pada judul tabel warna putih.
+
+20. **Warna Teks dalam Tabel**:
+    - Warna teks dalam sel tabel (elemen `<td>`) diatur dengan `color: #751A60;`, yang memberikan teks warna ungu tua pada sel tabel.
+</details>
+
+</details>
+</details>
+

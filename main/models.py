@@ -8,4 +8,5 @@ class Item(models.Model):
     description = models.TextField()
     pet = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    amount = models.PositiveIntegerField(default=1)  
+    amount = models.PositiveIntegerField(default=1)
+    image = models.TextField()
