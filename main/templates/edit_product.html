@@ -3,20 +3,99 @@
 {% load static %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product - PatPat Pet Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Gaya CSS Anda yang telah ada di sini */
 
-<h1>Edit Product</h1>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #d3e4f4;
+            min-height: 100%;
+        }
 
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Edit Product"/>
-            </td>
-        </tr>
-    </table>
-</form>
+        h1 {
+            font-size: 30px;
+            text-align: center;
+            color: #b33258;
+            margin-top: 20px;
+        }
 
-{% endblock %}
+        form {
+            overflow: auto;
+            margin: 20px auto;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th {
+            color: #454d8e;
+            font-weight: bold;
+            text-align: left;
+            padding: 10px;
+        }
+
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 0px solid #ffffff;
+        }
+
+        input[type="text" ],
+        input[type="number"] {
+            height: 40px;
+            display: block;
+            box-sizing: border-box;
+            width: 350px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #454d8e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Edit Product</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Edit Product" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock content %}
