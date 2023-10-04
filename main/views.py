@@ -15,6 +15,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
@@ -115,7 +116,7 @@ def remove_product(request, product_id):
 
 def edit_product(request, id):
     # Get product berdasarkan ID
-    product = Product.objects.get(pk = id)
+    product = Item.objects.get(pk = id)
 
     # Set product sebagai instance dari form
     form = ProductForm(request.POST or None, instance=product)
