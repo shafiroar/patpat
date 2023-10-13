@@ -587,3 +587,173 @@ Nilai negatif jarang digunakan: Padding jarang diatur dengan nilai negatif, dan 
 </details>
 </details>
 
+# Tugas 6
+
+<details>
+<summary>1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming</summary>
+
+Berikut adalah representasi tabel yang mencakup aspek lain dari pemrograman sinkron dan asinkron:
+
+| Pemrograman | Penjelasan | Arsitektur | Contoh Kasus |
+| --- | --- | --- | --- |
+| Sinkron | Operasi dilakukan secara berurutan dan harus selesai sebelum operasi berikutnya dimulai. | Arsitektur blokir, berarti operasi harus selesai sebelum operasi lain dapat dimulai. | Sinkron cocok untuk proyek pemrograman dengan kompleksitas dan persyaratan kerentanan yang terbatas. Tugas yang sangat bergantung pada pemrosesan CPU dan tidak melibatkan waktu tunggu I/O yang signifikan mungkin berkinerja lebih baik dalam lingkungan sinkron |
+| Asinkron | Operasi dapat terjadi secara paralel dan tidak perlu menunggu operasi lain selesai sebelum dapat dimulai. | Arsitektur non-blokir, berarti operasi dapat berjalan tanpa menghentikan operasi lain. | Asinkron sangat berguna untuk proyek pemrograman dengan tingkat kerentanan yang tinggi dan operasi I/O-bound. Misalnya, jika Anda memiliki tugas yang dapat memakan waktu lama untuk selesai, pemrograman asinkron biasanya adalah pilihan yang lebih baik |
+
+Pilihan antara pemrograman asinkron dan sinkron tergantung pada kebutuhan dan konteks sistem yang sedang dikembangkan. Dalam beberapa kasus, pemrograman asinkron mungkin lebih efisien dan efektif. Namun, dalam beberapa kasus lain, pemrograman sinkron mungkin lebih sesuai dan efektif
+
+</details>
+<details>
+<summary>2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.</summary>  
+
+Paradigma programing event-driven adalah suatu model di mana alur kontrol dalam program diatur oleh event, bukan berjalan secara berurutan atau linear. Event dapat diaktifkan oleh tindakan pengguna (seperti mengklik tombol) atau kejadian yang dibuat oleh sistem (seperti menerima data dari server). Dalam event-driven programming, program akan menunggu sampai event terjadi, lalu menjalankan fungsi yang terhubung dengan event tersebut.
+
+Salah satu contoh penerapan paradigma ini pada AJAX adalah menggunakan objek XMLHttpRequest untuk mengirim permintaan ke server dan mendapatkan respon dari server. Ketika permintaan tersebut selesai, event `readystatechange` akan terjadi dan fungsi yang terhubung dengan event tersebut akan dijalankan. Fungsi ini biasanya digunakan untuk memperbarui konten halaman web berdasarkan respon dari server.
+
+Berikut adalah contoh sederhana penggunaan AJAX dengan paradigma event-driven:
+
+```javascript
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        document.getElementById("demo").innerHTML = xhr.responseText;
+    }
+};
+xhr.open("GET", "ajax_info.txt", true);
+xhr.send();
+```
+
+Dalam contoh ini, ketika permintaan AJAX ke file `ajax_info.txt` selesai, event `readystatechange` akan terjadi dan fungsi yang terhubung dengan event tersebut akan dijalankan. Fungsi ini memperbarui konten elemen dengan id `demo` dengan teks yang diterima dari server
+
+</details>
+<details>
+<summary>3. Jelaskan penerapan asynchronous programming pada AJAX.</summary>
+
+Asynchronous JavaScript and XML (AJAX) adalah teknologi yang memungkinkan pembaruan sebagian dari halaman web tanpa harus memuat ulang seluruh halaman. Ini adalah contoh praktis dari asynchronous programming di JavaScript. Berikut ini adalah bagaimana asynchronous programming diterapkan dalam AJAX:
+
+1. **Membuat objek XMLHttpRequest**: Ini adalah langkah pertama dalam membuat permintaan AJAX. Objek XMLHttpRequest digunakan untuk berinteraksi dengan server dan melakukan operasi seperti mengirim dan menerima data.
+
+    ```javascript
+    var xhttp = new XMLHttpRequest();
+    ```
+
+2. **Menentukan apa yang terjadi ketika permintaan selesai**: Metode `onreadystatechange` digunakan untuk mengeksekusi fungsi saat XMLHttpRequest berubah status. Ini adalah bagian dari kode yang benar-benar asynchronous, karena fungsi ini akan dieksekusi ketika respons dari server siap, tanpa menunggu kode lain selesai.
+
+    ```javascript
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Operasi yang dilakukan ketika respons diterima
+        }
+    };
+    ```
+
+3. **Mengirim permintaan**: Metode `open` dan `send` digunakan untuk mengatur dan mengirim permintaan ke server. Metode `open` digunakan untuk menentukan jenis permintaan (GET, POST, dll.), URL, dan apakah permintaan tersebut harus asynchronous atau tidak (true untuk asynchronous, false untuk synchronous).
+
+    ```javascript
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
+    ```
+
+Dengan menggunakan teknik ini, permintaan dapat dikirim ke server dan browser dapat terus bekerja pada hal lain selama menunggu respons. Ketika respons diterima, fungsi yang ditentukan oleh `onreadystatechange` akan dieksekusi. Ini adalah prinsip dasar dari asynchronous programming: memungkinkan operasi I/O berjalan di latar belakang sehingga tidak menghentikan jalannya program.
+
+</details>
+
+<details>
+<summary>
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.</summary>
+
+| Aspek | AJAX (jQuery) | Fetch API |
+|---|---|---|
+| Penggunaan Cookies | Mengirim dan menerima cookies secara default | Tidak mengirim atau menerima cookies kecuali jika opsi `credentials` diinisialisasi |
+| Penanganan Error | Menolak `Promise` jika terjadi error HTTP seperti 404 atau 500 | Tidak menolak `Promise` meski status error HTTP seperti 404 atau 500. Hanya ditolak jika ada kegagalan jaringan atau sesuatu yang mencegah permintaan dari penyelesaian |
+| Baris Kode | Biasanya memerlukan lebih banyak baris kode | Biasanya memerlukan lebih sedikit baris kode |
+| Transformasi Data JSON | Mengubah respons menjadi JSON secara otomatis | Memerlukan langkah ekstra untuk mengubah respons menjadi JSON |
+| Pendekatan terhadap CORS dan Cookies | Lebih fleksibel | Lebih ketat, tidak mengirim cookies pada permintaan CORS kecuali jika `{credentials: 'include'}` digunakan |
+
+
+</details>
+<details>
+<summary>5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
+
+Untuk mengimplementasikan tutorial di atas, kita perlu memahami beberapa konsep dasar tentang Django dan AJAX. Django adalah framework web Python yang memungkinkan kita untuk membuat aplikasi web dengan mudah, sementara AJAX (Asynchronous JavaScript and XML) adalah teknik yang digunakan untuk membuat aplikasi web interaktif. Dalam konteks ini, kita akan menggunakan AJAX untuk mengambil dan memasukkan data ke dalam basis data tanpa perlu memuat ulang halaman web.
+
+Berikut ini adalah langkah-langkahnya:
+
+1. Pertama, kita perlu membuat fungsi pada `views.py` yang akan digunakan untuk mengembalikan data JSON dan menambahkan produk baru. Fungsi `get_product_json` mengambil semua objek produk dan mengembalikannya dalam format JSON. Sementara itu, fungsi `add_product_ajax` menerima permintaan POST dan menambahkan produk baru ke basis data.
+
+```python
+def get_product_json(request):
+    product_item = Product.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_product = Product(name=name, price=price, description=description, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+```
+
+2. Selanjutnya, kita perlu menambahkan rute URL untuk kedua fungsi tersebut dalam `urls.py`.
+
+```python
+path('get-product/', get_product_json, name='get_product_json'),
+path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
+```
+
+3. Setelah itu, kita perlu menambahkan kode JavaScript ke berkas `main.html` untuk menampilkan data produk menggunakan Fetch API dan menambahkan produk baru menggunakan AJAX. Fungsi `getProducts` digunakan untuk mengambil data JSON secara asynchronous, sementara fungsi `refreshProducts` digunakan untuk me-refresh data produk.
+
+```javascript
+async function getProducts() {
+    return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+}
+
+async function refreshProducts() {
+    document.getElementById("product_table").innerHTML = ""
+    const products = await getProducts()
+    let htmlString = `<tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>`
+    products.forEach((item) => {
+        htmlString += `\n<tr>
+        <td>${item.fields.name}</td>
+        <td>${item.fields.price}</td>
+        <td>${item.fields.description}</td>
+        <td>${item.fields.date_added}</td>
+    </tr>` 
+    })
+    
+    document.getElementById("product_table").innerHTML = htmlString
+}
+
+refreshProducts()
+```
+
+4. Terakhir, kita perlu menambahkan kode JavaScript untuk menambahkan produk baru ke basis data menggunakan AJAX. Fungsi `addProduct` membuat permintaan POST ke server dengan data form dari modal. Setelah permintaan berhasil, form akan di-reset dan data produk akan di-refresh.
+
+```javascript
+function addProduct() {
+    fetch("{% url 'main:add_product_ajax' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#form'))
+    }).then(refreshProducts)
+
+    document.getElementById("form").reset()
+    return false
+}
+
+document.getElementById("button_add").onclick = addProduct
+```
+
+Dengan cara ini, kita dapat membuat aplikasi yang dapat menambahkan data dengan menggunakan AJAX, tanpa perlu melakukan reload setiap kali data produk baru ditambahkan.
+</details>

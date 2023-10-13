@@ -132,19 +132,23 @@ def edit_product(request, id):
     context = {'form': form}
     return render(request, "edit_product.html", context)
     
+@login_required(login_url='/login')
 def get_product_json(request):
-    product_item = Item.objects.all()
+    product_item = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', product_item))
 
 @csrf_exempt
 def add_product_ajax(request):
     if request.method == 'POST':
-        name = request.POST.get("name")
+        pet = request.POST.get("pet")
+        product = request.POST.get("product")
         price = request.POST.get("price")
         description = request.POST.get("description")
+        amount = request.POST.get("amount")
+        image = request.POST.get("image")
         user = request.user
 
-        new_product = Item(name=name, price=price, description=description, user=user)
+        new_product = Item(pet=pet, product=product, price=price, description=description, amount=amount, image=image, user=user)
         new_product.save()
 
         return HttpResponse(b"CREATED", status=201)

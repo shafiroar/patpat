@@ -155,6 +155,7 @@
             margin-top: 20px;
             margin-bottom: 30px;
             font-weight: bold;
+            text-align: center; 
         }
 
         td.product-name {
@@ -183,6 +184,9 @@
 
 <body>
 
+    
+    
+    
 <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
     <div class="bg-dark p-4">
         <h5 class="text-body-emphasis h4">Collapsed content</h5>
@@ -200,7 +204,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        
         <!-- Navbar Links (You can customize these) -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
@@ -265,18 +269,18 @@
         <th>Delete</th>
         <th>Edit</th>
     </tr>
-
+    
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
+    
     {% for product in products %}
-        <tr class="add-colortext">
-            <td>{{ product.pet }}</td>
-            <td>{{ product.product }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.description }}</td>
-            <td>
-                <form action="{% url 'main:add_product' product.id %}" method="post">
-                    {% csrf_token %}
+    <tr class="add-colortext">
+        <td>{{ product.pet }}</td>
+        <td>{{ product.product }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.description }}</td>
+        <td>
+            <form action="{% url 'main:add_product' product.id %}" method="post">
+                {% csrf_token %}
                     <button style="background-color: transparent; color: #fff; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Tambah">
                         <svg width="30px" height="30px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#24ab3d" stroke-width="0.00024000000000000003">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -310,19 +314,21 @@
                     </button>
                 </form>
             </td>    
-    
+            
             <td>
                 <a href="/edit-product/{{product.pk}}">
                     <button style="background-color: transparent; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Kurang">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 30 30">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="#ef687f"></path></g></svg>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="#ef687f"></path></g></svg>
                     </button>
                 </a>
             </td>    
-
+            
         </tr>
     {% endfor %}
 </table>
+
+
 
 <div class="add-product-button">
     <a href="{% url 'main:create_product' %}">
@@ -334,6 +340,7 @@
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
+
 <div class="logout-button">
     <a href="{% url 'main:logout' %}">
         <button>
@@ -341,4 +348,195 @@
         </button>
     </a>
 </div>
+
+<!-- table product with AJAX -->
+<table id="product_table"></table>
+
+<div class="add-product-button">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addProductButton">Add Product by AJAX</button>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="product" class="col-form-label">Product:</label>
+                        <input type="text" class="form-control" id="product" name="product"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pet" class="col-form-label">Pet:</label>
+                        <input type="text" class="form-control" id="pet" name="pet"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="col-form-label">Image:</label>
+                        <input type="text" class="form-control" id="image" name="image"></input>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+
+    async function updateProducts() {
+        const products = await getProducts();
+        const productContainer = document.getElementById("product-container");
+        productContainer.innerHTML = ""; 
+
+        products.forEach((item) => {
+            const productCard = document.createElement("div");
+            productCard.className = "product-card";
+            const productDetails = document.createElement("div");
+            productDetails.className = "product-details";
+
+            productDetails.innerHTML = `
+                <div class="product-image">
+                    <img src="${item.fields.link_image}" alt="${item.fields.name}" width="300">
+                </div>
+                <p>${item.fields.name}</p>
+                <p>IDR ${item.fields.price}</p>
+                <p>Stock: ${item.fields.amounts}</p>
+                <div class="warning" style="font-weight: bold;">
+                    <p>${item.fields.description}</p>
+                </div>
+            `;
+
+            productCard.appendChild(productDetails);
+            productContainer.appendChild(productCard);
+        });
+    }
+    updateProducts();
+
+    function deleteProduct(productId) {
+        // Tampilkan pesan konfirmasi
+        if (confirm("Apakah Anda yakin ingin menghapus produk ini?")) {
+            fetch(`delete_product_ajax/${productId}`, {
+                method: "DELETE",
+                headers: {
+                    "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+                },
+            })
+            .then(refreshProducts)
+            .then(updateProducts);
+        }
+    }
+
+
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = `<tr>
+            <th>Pet</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Increase</th>
+            <th>Amount</th>
+            <th>Decrease</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>`
+        products.forEach((item) => {
+            htmlString += `\n<tr>
+            <td>${item.fields.pet }</td>
+            <td>${item.fields.product }</td>
+            <td>${item.fields.price }</td>
+            <td>${item.fields.description }</td>
+            <td>
+                <a href="add_product/${item.pk}">
+                    {% csrf_token %}
+                    <button style="background-color: transparent; color: #fff; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Tambah">
+                        <svg width="30px" height="30px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#24ab3d" stroke-width="0.00024000000000000003">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.43200000000000005"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM12 8.25C12.4142 8.25 12.75 8.58579 12.75 9V11.25H15C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H12.75L12.75 15C12.75 15.4142 12.4142 15.75 12 15.75C11.5858 15.75 11.25 15.4142 11.25 15V12.75H9C8.58579 12.75 8.25 12.4142 8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H11.25L11.25 9C11.25 8.58579 11.5858 8.25 12 8.25Z" fill="#24ab3d"></path>
+                            </g>
+                        </svg>
+                        
+                    </button>
+                </a>
+            </td>
+            <td>${ item.fields.amount }</td>
+            <td>
+                <a href="decrement_product/${item.pk}">
+                    {% csrf_token %}
+                    <button style="background-color: transparent; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Kurang">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 30 30">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#18b3f6" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H9C8.58579 12.75 8.25 12.4142 8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H15C15.4142 11.25 15.75 11.5858 15.75 12Z" fill="#fca152"></path> </g></svg>
+                        </svg>
+                    </button>
+                </a>
+            </td>
+            <td>
+                <a href="remove_product/${item.pk}">
+                    {% csrf_token %}
+                    <button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="Hapus">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 30 30">
+                            <path d="M6 8v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8H6zM24 4h-6c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1H6C5.4 4 5 4.4 5 5s.4 1 1 1h18c.6 0 1-.4 1-1S24.6 4 24 4z" fill="#FF0000"></path>
+                        </svg>
+                    </button>
+                </a>
+            </td>    
+    
+            <td>
+                <a href="/edit-product/{{product.pk}}">
+                    <button style="background-color: transparent; font-weight: bolder; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" type="submit" name="Kurang">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 30 30">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="#ef687f"></path></g></svg>
+                    </button>
+                </a>
+            </td>    
+
+        </tr>` 
+        })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+    refreshProducts();
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        })
+        .then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.getElementById("button_add").onclick = addProduct
+
+</script>
+
 {% endblock content %}
