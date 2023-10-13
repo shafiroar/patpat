@@ -335,17 +335,6 @@
     </a>
 </div> -->
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
-
-<div class="logout-button">
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
-</div>
-
 <!-- table product with AJAX -->
 <table id="product_table"></table>
 
@@ -396,6 +385,17 @@
 
 <div class="add-product-button">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addProductButton">Add Product by AJAX</button>
+</div>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
+
+<div class="logout-button">
+    <a href="{% url 'main:logout' %}">
+        <button>
+            Logout
+        </button>
+    </a>
 </div>
 
 
